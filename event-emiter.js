@@ -6,4 +6,8 @@ const myEvent = new EventEmiter()
 myEvent.on('birthday', ()=>{
     console.log(`happy birthday `)
 })
-myEvent.emit('birthday')
+myEvent.on('birthday', (gift)=>{
+    console.log(`happy birthday ${gift} `)
+})
+
+myEvent.emit('birthday', 'watch')
