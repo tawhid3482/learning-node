@@ -12,10 +12,18 @@ server.on("request", (req, res) => {
   const readAble = fs.createReadStream(process.cwd() + "/texts/read.txt");
 
   readAble.on("data", (buffer) => {
+    res.statusCode = 200
     res.write(buffer);
   });
   readAble.on("end", () => {
+    res.statusCode = 200
     res.end("hello world");
+  });
+
+  readAble.on("error", (error) => {
+    console.log(error)
+    res.statusCode = 200
+    res.end("something went wrong");
   });
 });
 
